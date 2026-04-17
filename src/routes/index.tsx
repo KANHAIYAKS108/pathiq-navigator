@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { Sparkles, GitBranch, Zap, ArrowRight } from "lucide-react";
 import { VisualDemo } from "@/components/VisualDemo";
 import { RoadmapGenerator } from "@/components/RoadmapGenerator";
+import { HowItWorks } from "@/components/HowItWorks";
+import { HowToUse } from "@/components/HowToUse";
+import heroNeural from "@/assets/hero-neural.jpg";
+import ctaBanner from "@/assets/cta-banner.jpg";
+import ambientParticles from "@/assets/ambient-particles.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,6 +23,8 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Personalized learning roadmaps, generated in seconds.",
       },
+      { property: "og:image", content: heroNeural },
+      { name: "twitter:image", content: heroNeural },
     ],
   }),
   component: Landing,
@@ -26,8 +33,20 @@ export const Route = createFileRoute("/")({
 function Landing() {
   return (
     <div className="min-h-screen relative overflow-hidden">
+      {/* Ambient hero video — sits behind everything */}
+      <div className="absolute inset-x-0 top-0 h-[100vh] overflow-hidden pointer-events-none">
+        <video
+          src={ambientParticles.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background" />
+      </div>
       <div className="absolute inset-0 bg-gradient-aurora pointer-events-none" />
-      <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
 
       {/* Nav */}
       <header className="relative z-10 px-6 md:px-10 py-6 flex items-center justify-between">
@@ -35,10 +54,15 @@ function Landing() {
           <div className="w-9 h-9 rounded-xl bg-gradient-primary shadow-glow flex items-center justify-center">
             <GitBranch className="w-5 h-5 text-primary-foreground" strokeWidth={2.5} />
           </div>
-          <span className="text-lg font-bold tracking-tight">
-            Path<span className="text-gradient-primary">Iq</span>
+          <span className="text-2xl font-bold tracking-tight font-display">
+            Path<em className="italic text-gradient-primary">Iq</em>
           </span>
         </div>
+        <nav className="hidden md:flex items-center gap-8 text-sm font-mono uppercase tracking-[0.2em] text-muted-foreground">
+          <a href="#how-it-works" className="hover:text-primary transition-colors">How it works</a>
+          <a href="#how-to-use" className="hover:text-primary transition-colors">How to use</a>
+          <a href="#generate" className="hover:text-primary transition-colors">Generate</a>
+        </nav>
         <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs font-mono">
           <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
           AI online · Gemini 2.5
@@ -51,7 +75,7 @@ function Landing() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6 text-xs font-mono uppercase tracking-wider"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-8 text-xs font-mono uppercase tracking-[0.25em]"
         >
           <Sparkles className="w-3.5 h-3.5 text-primary" />
           AI Career GPS · v1
@@ -61,12 +85,12 @@ function Landing() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.05 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95]"
+          className="font-display text-5xl md:text-7xl lg:text-[8.5rem] font-bold tracking-tight leading-[0.95]"
         >
-          From <span className="text-gradient-primary">where you are</span>
+          From <em className="italic font-normal text-gradient-primary">where you are</em>
           <br />
           to where you{" "}
-          <span className="relative">
+          <span className="relative italic font-normal">
             want to be.
             <motion.svg
               initial={{ pathLength: 0 }}
@@ -90,7 +114,7 @@ function Landing() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+          className="mt-10 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-serif italic"
         >
           PathIq turns any career goal into a step-by-step interactive roadmap. Real
           resources, real timelines, generated in seconds.
@@ -107,6 +131,40 @@ function Landing() {
         </motion.div>
       </section>
 
+      {/* Hero showcase image */}
+      <section className="relative z-10 px-6 md:px-10 pb-20 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative group"
+        >
+          <div className="absolute -inset-6 bg-gradient-primary opacity-30 blur-3xl group-hover:opacity-50 transition-opacity rounded-full" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-border shadow-elevated">
+            <img
+              src={heroNeural}
+              alt="PathIq neural roadmap visualization"
+              width={1920}
+              height={1080}
+              className="w-full h-auto object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+            <div className="absolute bottom-8 md:bottom-12 left-8 md:left-12 right-8 md:right-12">
+              <div className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-3">
+                Visualized Intelligence
+              </div>
+              <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight max-w-2xl">
+                Every path, <em className="italic font-normal text-gradient-primary">illuminated.</em>
+              </h2>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* How it works */}
+      <HowItWorks />
+
       {/* Visual demo */}
       <section className="relative z-10 px-6 md:px-10 pb-20 max-w-6xl mx-auto">
         <motion.div
@@ -114,13 +172,13 @@ function Landing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <div className="text-xs font-mono uppercase tracking-wider text-primary mb-3">
+          <div className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4">
             See it in action
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            A live canvas, not a static plan.
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+            A live canvas, <em className="italic font-normal text-gradient-primary">not a static plan.</em>
           </h2>
         </motion.div>
 
@@ -134,9 +192,27 @@ function Landing() {
         </motion.div>
       </section>
 
+      {/* How to use */}
+      <HowToUse />
+
       {/* Features */}
       <section className="relative z-10 px-6 md:px-10 pb-24 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <div className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4">
+            Why PathIq
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+            Built for the <em className="italic font-normal text-gradient-primary">ambitious.</em>
+          </h2>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-5">
           {[
             {
               icon: Zap,
@@ -162,31 +238,67 @@ function Landing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass rounded-2xl p-6 hover:shadow-glow transition-shadow"
+                className="glass rounded-3xl p-7 hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-11 h-11 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center mb-5 shadow-glow">
                   <Icon className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <h3 className="text-lg font-bold mb-1.5">{f.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{f.body}</p>
+                <h3 className="text-2xl font-bold mb-2 tracking-tight">{f.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">{f.body}</p>
               </motion.div>
             );
           })}
         </div>
-
-        <div className="mt-16 text-center">
-          <a
-            href="#generate"
-            className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-primary hover:text-accent transition-colors"
-          >
-            Build your path
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
       </section>
 
-      <footer className="relative z-10 border-t border-border py-8 text-center text-xs font-mono text-muted-foreground">
-        PathIq · AI Career GPS
+      {/* Final CTA banner */}
+      <section className="relative z-10 px-6 md:px-10 pb-24 max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.9 }}
+          className="relative overflow-hidden rounded-[2rem] border border-border shadow-elevated"
+        >
+          <img
+            src={ctaBanner}
+            alt="A path forward"
+            loading="lazy"
+            width={1920}
+            height={800}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/40" />
+          <div className="relative px-8 md:px-16 py-20 md:py-28">
+            <div className="max-w-2xl">
+              <div className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4">
+                The only step that matters
+              </div>
+              <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">
+                Begin <em className="italic font-normal text-gradient-primary">your path</em> tonight.
+              </h2>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+                In ten seconds you'll have a roadmap a career coach would charge $300 to draft. Then you'll have the rest of your life to walk it.
+              </p>
+              <a
+                href="#generate"
+                className="inline-flex items-center gap-3 px-7 py-4 rounded-full bg-gradient-primary text-primary-foreground font-mono uppercase text-sm tracking-[0.2em] shadow-glow hover:shadow-violet-glow transition-all duration-300 hover:scale-105"
+              >
+                Build your path
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      <footer className="relative z-10 border-t border-border py-10 text-center">
+        <div className="font-display text-2xl mb-2">
+          Path<em className="italic text-gradient-primary">Iq</em>
+        </div>
+        <div className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">
+          AI Career GPS · Crafted with intent
+        </div>
       </footer>
     </div>
   );
