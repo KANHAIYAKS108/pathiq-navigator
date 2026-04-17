@@ -40,7 +40,7 @@ export const Route = createFileRoute("/roadmap/$id")({
 function RoadmapPage() {
   const { id, career, roadmap } = Route.useLoaderData();
   const completed = useRoadmapStore((s) => s.completed);
-  const completedCount = roadmap.phases.filter((p) => completed[p.id]).length;
+  const completedCount = roadmap.phases.filter((p: { id: string }) => completed[p.id]).length;
   const pct = Math.round((completedCount / roadmap.phases.length) * 100);
 
   return (
