@@ -42,7 +42,8 @@
   --color-electric: var(--electric);
   --color-violet: var(--violet);
 
-  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-display: "Playfair Display", "Times New Roman", Times, Georgia, serif;
+  --font-serif: "Cormorant Garamond", "Times New Roman", Times, Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
@@ -116,8 +117,16 @@
     color: var(--color-foreground);
     background-image: var(--gradient-mesh);
     background-attachment: fixed;
-    font-feature-settings: "ss01", "cv11";
+    font-family: "Cormorant Garamond", "Times New Roman", Times, Georgia, serif;
+    font-feature-settings: "liga", "dlig", "kern";
     -webkit-font-smoothing: antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", "Times New Roman", Times, Georgia, serif;
+    letter-spacing: -0.015em;
   }
 
   ::selection {
