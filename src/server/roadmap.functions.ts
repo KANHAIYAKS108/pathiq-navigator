@@ -70,12 +70,14 @@ export const generateRoadmap = createServerFn({ method: "POST" })
 
       const { data: inserted, error: dbError } = await supabaseAdmin
         .from("roadmaps")
-        .insert({
-          career: data.career,
-          skill_level: data.skillLevel,
-          hours_per_day: data.hoursPerDay,
-          data: roadmap as unknown as Record<string, unknown>,
-        })
+        .insert([
+          {
+            career: data.career,
+            skill_level: data.skillLevel,
+            hours_per_day: data.hoursPerDay,
+            data: roadmap as unknown as import("@/integrations/supabase/types").Json,
+          },
+        ])
         .select("id")
         .single();
 
