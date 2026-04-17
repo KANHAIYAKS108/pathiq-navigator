@@ -14,7 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      node_progress: {
+        Row: {
+          completed: boolean
+          id: string
+          node_id: string
+          roadmap_id: string
+          session_id: string
+          updated_at: string
+        }
+        Insert: {
+          completed?: boolean
+          id?: string
+          node_id: string
+          roadmap_id: string
+          session_id: string
+          updated_at?: string
+        }
+        Update: {
+          completed?: boolean
+          id?: string
+          node_id?: string
+          roadmap_id?: string
+          session_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "node_progress_roadmap_id_fkey"
+            columns: ["roadmap_id"]
+            isOneToOne: false
+            referencedRelation: "roadmaps"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      roadmaps: {
+        Row: {
+          career: string
+          created_at: string
+          data: Json
+          hours_per_day: number
+          id: string
+          skill_level: string
+        }
+        Insert: {
+          career: string
+          created_at?: string
+          data: Json
+          hours_per_day: number
+          id?: string
+          skill_level: string
+        }
+        Update: {
+          career?: string
+          created_at?: string
+          data?: Json
+          hours_per_day?: number
+          id?: string
+          skill_level?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
