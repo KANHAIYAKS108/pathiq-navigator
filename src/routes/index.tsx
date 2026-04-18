@@ -85,7 +85,7 @@ function Landing() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.05 }}
-          className="font-display text-5xl md:text-7xl lg:text-[8.5rem] font-bold tracking-tight leading-[0.95]"
+          className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]"
         >
           From <em className="italic font-normal text-gradient-primary">where you are</em>
           <br />
@@ -114,7 +114,7 @@ function Landing() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-10 text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-serif italic"
+          className="mt-6 text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed font-serif italic"
         >
           PathIq turns any career goal into a step-by-step interactive roadmap. Real
           resources, real timelines, generated in seconds.
@@ -124,7 +124,7 @@ function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-12"
+          className="mt-10"
           id="generate"
         >
           <RoadmapGenerator />
@@ -132,29 +132,29 @@ function Landing() {
       </section>
 
       {/* Hero showcase image */}
-      <section className="relative z-10 px-6 md:px-10 pb-20 max-w-6xl mx-auto">
+      <section className="relative z-10 px-6 md:px-10 pb-16 max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
           className="relative group"
         >
-          <div className="absolute -inset-6 bg-gradient-primary opacity-30 blur-3xl group-hover:opacity-50 transition-opacity rounded-full" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-border shadow-elevated">
+          <div className="absolute -inset-4 bg-gradient-primary opacity-25 blur-3xl group-hover:opacity-40 transition-opacity rounded-full" />
+          <div className="relative overflow-hidden rounded-2xl border border-border shadow-elevated max-h-[460px]">
             <img
               src={heroNeural}
               alt="PathIq neural roadmap visualization"
               width={1920}
               height={1080}
-              className="w-full h-auto object-cover"
+              className="w-full h-full object-cover max-h-[460px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-            <div className="absolute bottom-8 md:bottom-12 left-8 md:left-12 right-8 md:right-12">
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-3">
+            <div className="absolute bottom-6 md:bottom-8 left-6 md:left-10 right-6 md:right-10">
+              <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary mb-2">
                 Visualized Intelligence
               </div>
-              <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tight max-w-2xl">
+              <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight max-w-xl">
                 Every path, <em className="italic font-normal text-gradient-primary">illuminated.</em>
               </h2>
             </div>
@@ -177,7 +177,7 @@ function Landing() {
           <div className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4">
             See it in action
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
             A live canvas, <em className="italic font-normal text-gradient-primary">not a static plan.</em>
           </h2>
         </motion.div>
@@ -207,7 +207,7 @@ function Landing() {
           <div className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4">
             Why PathIq
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
             Built for the <em className="italic font-normal text-gradient-primary">ambitious.</em>
           </h2>
         </motion.div>
@@ -243,8 +243,8 @@ function Landing() {
                 <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center mb-5 shadow-glow">
                   <Icon className="w-5 h-5 text-primary-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold mb-2 tracking-tight">{f.title}</h3>
-                <p className="text-base text-muted-foreground leading-relaxed">{f.body}</p>
+                <h3 className="text-xl font-bold mb-2 tracking-tight">{f.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{f.body}</p>
               </motion.div>
             );
           })}
@@ -274,10 +274,10 @@ function Landing() {
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4">
                 The only step that matters
               </div>
-              <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-[1.05] mb-6">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.05] mb-5">
                 Begin <em className="italic font-normal text-gradient-primary">your path</em> tonight.
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+              <p className="text-base md:text-lg text-muted-foreground mb-7 max-w-xl">
                 In ten seconds you'll have a roadmap a career coach would charge $300 to draft. Then you'll have the rest of your life to walk it.
               </p>
               <a
